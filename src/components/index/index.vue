@@ -142,6 +142,34 @@
         </li>
       </ul>
     </div>
+    <!-- 底部友情链接 -->
+    <div class="bottomFriend">
+      <div class="friend">
+        <div class="bottomLeft">
+          <ul v-for="(item,index) in friendList" :key="index">
+            <span>{{item.title}}</span>
+            <li v-for="(elem,cut) in item.items" :key="cut">{{elem}}</li>
+          </ul>
+        </div>
+        <div class="bottomRight">
+          <span>关注</span>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <div class="record">
+        <div>
+          <span>Copyright © 2018 Takungpao <em>All Rights Reserved</em></span>
+          <a href="https://beian.miit.gov.cn" target="_blank">京ICP备13049349号</a>
+          <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037337" target="_blank">
+            <img src="http://r2d2.takungpao.com/cn/common/images/ghs.png">京公网安备11010502037337号
+          </a>
+        </div>
+      </div>
+    </div>
     <!-- 返回顶部按钮 -->
     <div id="tipback" title="返回顶部" style="display: block;" @click="backTop"></div>
   </div>
@@ -300,6 +328,14 @@ export default {
           {icon:"http://img.takungpao.com/2019/0514/20190514013033103.jpg",title:'中国长白山国际林海雪地马拉松节'},
           {icon:"http://img.takungpao.com/2019/0514/20190514013033103.jpg",title:'中国长白山国际林海雪地马拉松节'}
         ]}
+      ],
+      friendList:[
+        {title:'新闻',items:['中国','港闻','两岸','国际','军事','大公访谈']},
+        {title:'评论',items:['社评','北京观察','隔海观澜','纵横谈','点击香江','公评世界','大公评论']},
+        {title:'视频',items:[]},
+        {title:'财经',items:['大公财经','紫荆财智','经济观察家','港股','汽车','商业']},
+        {title:'艺文',items:['大公园','小公园','艺术赏析','有料历史','大公故事','养生堂']},
+        {title:'关于大公网',items:['法律声明','广告服务','联络我们','LED屏','往期回顾']}
       ]
     };
   },
@@ -844,11 +880,12 @@ export default {
       }
     }
   }
+  // 底部轮播
   .chanye_wrap{
     width: 1200px;
     height: 280px;
     position: relative;
-    margin: 0 auto 20px;
+    margin: 50px auto 20px;
     .on{
       .h3_tab{
         color: #c9a063;
@@ -914,6 +951,132 @@ export default {
             bottom: 0;
             z-index: 2;
           }
+        }
+      }
+    }
+  }
+  // 底部友情链接
+  .bottomFriend{
+    width: 100%;
+    min-width: 1200px;
+    height: auto;
+    margin-top: 10px;
+    background: #fff;
+    // 友情链接
+    .friend{
+      width: 1200px;
+      height: auto;
+      padding: 40px 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      .bottomLeft{
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        ul{
+          width: 16%;
+          span{
+            display: block;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #000;
+            cursor: pointer;
+            transition: all .5s;
+            &:hover{
+              color: #c9a063;
+              transition: all .5s;
+            }
+          }
+          li{
+            line-height: 24px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+            transition: all .3s;
+            &:hover{
+              color: #c9a063;
+              transition: all .3s;
+            }
+          }
+        }
+      }
+      .bottomRight{
+        width: 30%;
+        height: 130px;
+        margin-left: 10px;
+        padding-left: 35px;
+        border-left: 1px solid #eee;
+        span{
+          display: block;
+          padding-left: 15px;
+          line-height: 20px;
+          margin-bottom: 20px;
+          font-size: 14px;
+          color: #000;
+        }
+        ul{
+          li{
+            cursor: pointer;
+            transition: all .5s;
+            &:hover{
+              opacity: .8;
+              transition: all .5s;
+            }
+          }
+          :nth-child(1){
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            margin: 0 0 0 15px;
+            background: url(../../assets/layout.png) no-repeat 0 -50px;
+            display: inline;
+            float: left;
+            text-indent: -9999px;
+          }
+          :nth-child(2){
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            margin: 0 0 0 15px;
+            background: url(../../assets/layout.png) no-repeat -60px -50px;
+            display: inline;
+            float: left;
+            text-indent: -9999px;
+          }
+          :nth-child(3){
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            margin: 0 0 0 15px;
+            background: url(../../assets/layout.png) no-repeat 0 -160px;
+            display: inline;
+            float: left;
+            text-indent: -9999px;
+          }
+        }
+      }
+    }
+    // 备案号
+    .record{
+      line-height: 20px;
+      padding: 15px 0;
+      border-top: 1px solid #eee;
+      color: #666;
+      text-align: center;
+      font-size: 12px;
+      span{
+        margin-right: 8px;
+        em{
+          font-style: normal;
+        }
+      }
+      a{
+        color: #666;
+        margin-right: 8px;
+        img{
+          vertical-align: middle;
         }
       }
     }
